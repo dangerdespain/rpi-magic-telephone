@@ -12,7 +12,7 @@ KEYPAD = [
 ]
 
 ROW_PINS = [4, 14, 15, 17] # BCM numbering
-COL_PINS = [18, 27, 22] # BCM numbering
+COL_PINS = [23, 24, 25] # BCM numbering
 
 factory = rpi_gpio.KeypadFactory()
 
