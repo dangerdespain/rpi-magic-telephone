@@ -1,7 +1,7 @@
 from pad4pi import rpi_gpio
 import RPi.GPIO as GPIO
 
-GPI.setwarnings(false)
+GPIO.setwarnings(false)
 
 KEYPAD = [
     [1, 2, 3],
