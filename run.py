@@ -1,5 +1,6 @@
 from pad4pi import rpi_gpio
 import RPi.GPIO as GPIO
+import time
 
 GPIO.setwarnings(False)
 
