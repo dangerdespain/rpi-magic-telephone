@@ -26,11 +26,12 @@ def callback(in_data, frame_count, time_info, status):
 # Try factory.create_4_by_3_keypad
 # and factory.create_4_by_4_keypad for reasonable defaults
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
-
+stream = None
 LAST_KEY = "+"
 
 def printKey(key):
     global LAST_KEY
+    global stream
     if LAST_KEY != key:
         LAST_KEY = key
         FILE = 'alphabet/' + str(key)
@@ -44,14 +45,14 @@ def printKey(key):
         p = pyaudio.PyAudio()
         print(FILENAME)
 
-        # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-        #                 channels=wf.getnchannels(),
-        #                 rate=wf.getframerate(),
-        #                 output=True,
-        #                 stream_callback=callback)
+        stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+                        channels=wf.getnchannels(),
+                        rate=wf.getframerate(),
+                        output=True,
+                        stream_callback=callback)
 
-        # stream.start_stream()
-        # data = wf.readframes(CHUNK)
+        stream.start_stream()
+        data = wf.readframes(CHUNK)
 
 # printKey will be called each time a keypad button is pressed
 keypad.registerKeyPressHandler(printKey)
@@ -59,10 +60,10 @@ keypad.registerKeyPressHandler(printKey)
 try:
     while(True):
 
-        # if stream.is_active() == False:
-        #     stream.stop_stream()
-        #     stream.close()
-        #     wf.close()
+        if stream.is_active() == False:
+            stream.stop_stream()
+            stream.close()
+            wf.close()
 
         time.sleep(0.1)
 except:
