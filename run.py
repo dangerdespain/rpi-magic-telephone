@@ -6,7 +6,7 @@ import pyaudio
 import wave
 # p = pyaudio.PyAudio()
 
-GPIO.setwarnings(False)
+# GPIO.setwarnings(False)
 
 KEYPAD = [
     [6,4,5], # [1, 2, 3], 
@@ -15,7 +15,8 @@ KEYPAD = [
     [7,8,9] # ["*", 0, "#"] 
 ]
 
-ROW_PINS = [4, 14, 15, 17] # BCM numbering
+ROW_PINS = [4, 14, 26, 17] # BCM numbering
+# ROW_PINS = [4, 14, 15, 17] # BCM numbering
 COL_PINS = [23, 24, 25] # BCM numbering
 
 factory = rpi_gpio.KeypadFactory()
