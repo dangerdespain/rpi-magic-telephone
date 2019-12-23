@@ -5,6 +5,7 @@ import os
 import pyaudio
 import wave
 from threading import Thread
+import pygame
 
 # p = pyaudio.PyAudio()
 
@@ -32,6 +33,7 @@ keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PI
 stream = None
 LAST_KEY = "+"
 
+pygame.mixer.init()
 def printKey(key):
     # global LAST_KEY
     # global stream
@@ -42,8 +44,12 @@ def printKey(key):
         FILE = 'words/PLEASURE'
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    os.system('mpg321 ' + FILENAME + ' -o alsa -a plughw:0,0')
-    print(FILENAME)
+    os.system('mpg321 ' + FILENAME + ' -o both -a plughw:0,0')
+    # print(FILENAME)
+    pygame.mixer.music.load(FILENAME)
+    pygame.mixer.music.play()
+    # while pygame.mixer.music.get_busy() == True:
+    # continue
         # wf = wave.open(FILENAME, 'rb')
 
         # p = pyaudio.PyAudio()
