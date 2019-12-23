@@ -31,16 +31,16 @@ stream = None
 LAST_KEY = "+"
 
 def printKey(key):
-    global LAST_KEY
-    global stream
-    if LAST_KEY != key:
-        LAST_KEY = key
-        FILE = 'alphabet/' + str(key)
-        if key == '*' or key == '#':
-            FILE = 'words/PLEASURE'
+    # global LAST_KEY
+    # global stream
+    # if LAST_KEY != key:
+        # LAST_KEY = key
+    FILE = 'alphabet/' + str(key)
+    if key == '*' or key == '#':
+        FILE = 'words/PLEASURE'
 
-        FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-        os.system('aplay ' + FILENAME)
+    FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
+    os.system('aplay ' + FILENAME)
         # wf = wave.open(FILENAME, 'rb')
 
         # p = pyaudio.PyAudio()
