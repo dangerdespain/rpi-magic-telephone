@@ -30,18 +30,18 @@ keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PI
 def printKey(key):
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/alphabet/' + str(key) + '.wav'
     print(FILENAME)
-    os.system('aplay ' + FILENAME)
-    wf = wave.open(FILENAME, 'rb')
+    # os.system('aplay ' + FILENAME)
+    # wf = wave.open(FILENAME, 'rb')
 
-    p = pyaudio.PyAudio()
+    # p = pyaudio.PyAudio()
 
-    stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                    channels=wf.getnchannels(),
-                    rate=wf.getframerate(),
-                    output=True,
-                    stream_callback=callback)
+    # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+    #                 channels=wf.getnchannels(),
+    #                 rate=wf.getframerate(),
+    #                 output=True,
+    #                 stream_callback=callback)
 
-    stream.start_stream()
+    # stream.start_stream()
     # data = wf.readframes(CHUNK)
 
 # printKey will be called each time a keypad button is pressed
@@ -50,10 +50,10 @@ keypad.registerKeyPressHandler(printKey)
 try:
     while(True):
 
-        if stream.is_active() == False:
-            stream.stop_stream()
-            stream.close()
-            wf.close()
+        # if stream.is_active() == False:
+        #     stream.stop_stream()
+        #     stream.close()
+        #     wf.close()
 
         time.sleep(0.1)
 except:
