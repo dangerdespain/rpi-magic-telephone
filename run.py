@@ -60,10 +60,10 @@ keypad.registerKeyPressHandler(printKey)
 try:
     while(True):
 
-        if stream.is_active() == False:
-            stream.stop_stream()
-            stream.close()
-            wf.close()
+        # if stream.is_active() == False:
+        #     stream.stop_stream()
+        #     stream.close()
+        #     wf.close()
 
         time.sleep(0.1)
 except:
