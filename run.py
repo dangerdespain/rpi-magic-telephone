@@ -33,8 +33,8 @@ stream = None
 LAST_KEY = "+"
 PATH = os.path.dirname(os.path.abspath(__file__))
 pygame.mixer.init()
-pygame.mixer.music.set_volume(1.0)
 def printKey(key):
+    pygame.mixer.music.set_volume(1.0)
     # global LAST_KEY
     # global stream
     # if LAST_KEY != key:
