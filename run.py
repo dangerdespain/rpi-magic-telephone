@@ -42,7 +42,7 @@ def printKey(key):
         FILE = 'words/PLEASURE'
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    os.system('mpg321 ' + FILENAME + ' ')
+    os.system('mpg321 ' + FILENAME + ' -o alsa -a plughw:0,0')
     print(FILENAME)
         # wf = wave.open(FILENAME, 'rb')
 

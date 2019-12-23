@@ -6,3 +6,4 @@ requires - python3 & pip
 <!-- $ sudo apt-get install libportaudio0 libportaudio2 libportaudiocpp0 portaudio19-dev -->
 $ sudo apt-get install python-pyaudio
 $ pip3 install pyaudio
+sudo apt-get install mpg321
