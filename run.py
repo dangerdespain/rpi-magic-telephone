@@ -27,7 +27,7 @@ def callback(in_data, frame_count, time_info, status):
 # and factory.create_4_by_4_keypad for reasonable defaults
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 
-LAST_KEY = None
+LAST_KEY = "+"
 
 def printKey(key):
     if LAST_KEY != key:
