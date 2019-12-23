@@ -64,6 +64,6 @@ try:
         #     stream.close()
         #     wf.close()
 
-        time.sleep(0.3)
+        time.sleep(0.1)
 except:
     keypad.cleanup()
