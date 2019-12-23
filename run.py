@@ -32,7 +32,7 @@ def callback(in_data, frame_count, time_info, status):
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 stream = None
 LAST_KEY = "+"
-
+PATH = os.path.dirname(os.path.abspath(__file__))
 pygame.mixer.init()
 def printKey(key):
     # global LAST_KEY
@@ -43,7 +43,7 @@ def printKey(key):
     if key == '*' or key == '#':
         FILE = 'words/PLEASURE'
 
-    FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
+    FILENAME = PATH  + '/audio/speak_and_spell/' + FILE + '.wav'
     # os.system('mpg321 ' + FILENAME + ' -o local -a plughw:0,0')
     # print(FILENAME)
     if pygame.mixer.music.get_busy() != True:
