@@ -4,6 +4,8 @@ import time
 import os
 import pyaudio
 import wave
+from threading import Thread
+
 # p = pyaudio.PyAudio()
 
 # GPIO.setwarnings(False)
@@ -40,7 +42,9 @@ def printKey(key):
         FILE = 'words/PLEASURE'
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    os.system('aplay ' + FILENAME)
+    
+    t = Thread(target = lambda: os.system('aplay ' + FILENAME))
+    t.start()
         # wf = wave.open(FILENAME, 'rb')
 
         # p = pyaudio.PyAudio()
