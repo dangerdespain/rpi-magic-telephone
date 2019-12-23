@@ -31,8 +31,10 @@ def callback(in_data, frame_count, time_info, status):
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 stream = None
 LAST_KEY = "+"
+thread = None
 
 def printKey(key):
+    global thread
     # global LAST_KEY
     # global stream
     # if LAST_KEY != key:
@@ -43,8 +45,9 @@ def printKey(key):
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
     
-    t = Thread(target = lambda: os.system('aplay ' + FILENAME))
-    t.start()
+    if(thread) thread.kill()
+    thread = Thread(target = lambda: os.system('aplay ' + FILENAME))
+    thread.start()
         # wf = wave.open(FILENAME, 'rb')
 
         # p = pyaudio.PyAudio()
