@@ -25,7 +25,7 @@ keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PI
 def printKey(key):
     print(key)
     # print('aplay ' + 'home/pi/speak_and_spell/alphabet/.wav')
-    os.system('aplay ' + '/speak_and_spell/alphabet/' + str(key) + '.wav')
+    os.system('aplay ' + './speak_and_spell/alphabet/' + str(key) + '.wav')
 
 # printKey will be called each time a keypad button is pressed
 keypad.registerKeyPressHandler(printKey)
