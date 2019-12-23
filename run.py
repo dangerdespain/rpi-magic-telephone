@@ -47,7 +47,7 @@ def printKey(key):
     # os.system('mpg321 ' + FILENAME + ' -o local -a plughw:0,0')
     # print(FILENAME)
     if pygame.mixer.music.get_busy() != True:
-        pygame.mixer.music.stop_stream()
+        pygame.mixer.music.stop()
     pygame.mixer.music.load(FILENAME)
     pygame.mixer.music.play()
     # continue
