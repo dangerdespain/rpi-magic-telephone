@@ -30,7 +30,7 @@ keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PI
 def printKey(key):
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/alphabet/' + str(key) + '.wav'
     print(FILENAME)
-    # os.system('aplay ' + FILENAME)
+    os.system('aplay ' + FILENAME)
     # wf = wave.open(FILENAME, 'rb')
 
     # p = pyaudio.PyAudio()
