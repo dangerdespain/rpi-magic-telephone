@@ -29,7 +29,7 @@ keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PI
 
 FILE = 'alphabet/' + str(key)
 if key == '*' || key == '#':
-    FILE = FILE = 'words/PLEASURE'
+    FILE = 'words/PLEASURE'
 
 
 def printKey(key):
