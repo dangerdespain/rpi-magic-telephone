@@ -27,9 +27,10 @@ def callback(in_data, frame_count, time_info, status):
 # and factory.create_4_by_4_keypad for reasonable defaults
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 
-global LAST_KEY = "+"
+LAST_KEY = "+"
 
 def printKey(key):
+    global LAST_KEY
     if LAST_KEY != key:
         LAST_KEY = key
         FILE = 'alphabet/' + str(key)
