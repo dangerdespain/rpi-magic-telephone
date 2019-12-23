@@ -44,7 +44,7 @@ def printKey(key):
         FILE = 'words/PLEASURE'
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    os.system('mpg321 ' + FILENAME + ' -o both -a plughw:0,0')
+    os.system('mpg321 ' + FILENAME + ' -o local -a plughw:0,0')
     # print(FILENAME)
     pygame.mixer.music.load(FILENAME)
     pygame.mixer.music.play()
