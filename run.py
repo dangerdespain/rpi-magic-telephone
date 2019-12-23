@@ -2,7 +2,9 @@ from pad4pi import rpi_gpio
 import RPi.GPIO as GPIO
 import time
 import os
-
+import pyaudio
+import wave
+# p = pyaudio.PyAudio()
 
 GPIO.setwarnings(False)
 
@@ -18,20 +20,41 @@ COL_PINS = [23, 24, 25] # BCM numbering
 
 factory = rpi_gpio.KeypadFactory()
 
+def callback(in_data, frame_count, time_info, status):
+    data = wf.readframes(frame_count)
+    return (data, pyaudio.paContinue)
 # Try factory.create_4_by_3_keypad
 # and factory.create_4_by_4_keypad for reasonable defaults
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 
 def printKey(key):
-    print(key)
-    print('aplay ' + os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/alphabet/' + str(key) + '.wav')
-    os.system('aplay ' + os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/alphabet/' + str(key) + '.wav')
+    FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/alphabet/' + str(key) + '.wav'
+    print(FILENAME)
+    os.system('aplay ' + FILENAME)
+    wf = wave.open(FILENAME, 'rb')
+
+    p = pyaudio.PyAudio()
+
+    stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+                    channels=wf.getnchannels(),
+                    rate=wf.getframerate(),
+                    output=True,
+                    stream_callback=callback)
+
+    stream.start_stream()
+    # data = wf.readframes(CHUNK)
 
 # printKey will be called each time a keypad button is pressed
 keypad.registerKeyPressHandler(printKey)
 
 try:
     while(True):
-        time.sleep(0.2)
+
+        if stream.is_active() == False:
+            stream.stop_stream()
+            stream.close()
+            wf.close()
+
+        time.sleep(0.1)
 except:
     keypad.cleanup()
