@@ -28,7 +28,7 @@ def callback(in_data, frame_count, time_info, status):
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 
 FILE = 'alphabet/' + str(key)
-if key == '*' || key == '#':
+if key == '*' OR key == '#':
     FILE = 'words/PLEASURE'
 
 
