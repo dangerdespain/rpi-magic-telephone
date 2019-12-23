@@ -42,7 +42,7 @@ def printKey(key):
         FILE = 'words/PLEASURE'
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    os.system('omxplayer ' + FILENAME + ' --no-keys -o local &')
+    os.system('omxplayer ' + FILENAME + ' --no-keys -o local --threshold 0 --live -s &')
     print(FILENAME)
         # wf = wave.open(FILENAME, 'rb')
 
