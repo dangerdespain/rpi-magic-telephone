@@ -30,7 +30,7 @@ keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PI
 
 
 def printKey(key):
-    
+
     FILE = 'alphabet/' + str(key)
     if key == '*' or key == '#':
         FILE = 'words/PLEASURE'
@@ -62,6 +62,6 @@ try:
         #     stream.close()
         #     wf.close()
 
-        time.sleep(0.1)
+        time.sleep(0.2)
 except:
     keypad.cleanup()
