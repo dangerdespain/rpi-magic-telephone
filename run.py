@@ -23,7 +23,7 @@ ROW_PINS = [4, 8, 7, 17] # BCM numbering
 COL_PINS = [23, 24, 25] # BCM numbering
 
 factory = rpi_gpio.KeypadFactory()
-
+pygame.mixer.Sound.set_volume(1.0)
 def callback(in_data, frame_count, time_info, status):
     data = wf.readframes(frame_count)
     return (data, pyaudio.paContinue)
