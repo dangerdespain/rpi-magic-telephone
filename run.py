@@ -45,7 +45,8 @@ def printKey(key):
 
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
     
-    if(thread) thread.kill()
+    if thread != None: 
+        thread.kill()
     thread = Thread(target = lambda: os.system('aplay ' + FILENAME))
     thread.start()
         # wf = wave.open(FILENAME, 'rb')
