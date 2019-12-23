@@ -27,14 +27,16 @@ def callback(in_data, frame_count, time_info, status):
 # and factory.create_4_by_4_keypad for reasonable defaults
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 
-FILE = 'alphabet/' + str(key)
-if key == '*' or key == '#':
-    FILE = 'words/PLEASURE'
 
 
 def printKey(key):
+    
+    FILE = 'alphabet/' + str(key)
+    if key == '*' or key == '#':
+        FILE = 'words/PLEASURE'
+
     FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    print(FILENAME)
+    # print(FILENAME)
     os.system('aplay ' + FILENAME)
     # wf = wave.open(FILENAME, 'rb')
 
