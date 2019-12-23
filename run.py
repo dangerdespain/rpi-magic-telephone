@@ -38,11 +38,11 @@ def printKey(key):
             FILE = 'words/PLEASURE'
 
         FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-        # print(FILENAME)
-        os.system('aplay ' + FILENAME)
-        # wf = wave.open(FILENAME, 'rb')
+        # os.system('aplay ' + FILENAME)
+        wf = wave.open(FILENAME, 'rb')
 
-        # p = pyaudio.PyAudio()
+        p = pyaudio.PyAudio()
+        print(FILENAME)
 
         # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
         #                 channels=wf.getnchannels(),
