@@ -27,29 +27,30 @@ def callback(in_data, frame_count, time_info, status):
 # and factory.create_4_by_4_keypad for reasonable defaults
 keypad = factory.create_keypad(keypad=KEYPAD, row_pins=ROW_PINS, col_pins=COL_PINS)
 
-
+LAST_KEY = None
 
 def printKey(key):
+    if LAST_KEY != key:
+        LAST_KEY = key
+        FILE = 'alphabet/' + str(key)
+        if key == '*' or key == '#':
+            FILE = 'words/PLEASURE'
 
-    FILE = 'alphabet/' + str(key)
-    if key == '*' or key == '#':
-        FILE = 'words/PLEASURE'
+        FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
+        # print(FILENAME)
+        os.system('aplay ' + FILENAME)
+        # wf = wave.open(FILENAME, 'rb')
 
-    FILENAME = os.path.dirname(os.path.abspath(__file__))  + '/audio/speak_and_spell/' + FILE + '.wav'
-    # print(FILENAME)
-    os.system('aplay ' + FILENAME)
-    # wf = wave.open(FILENAME, 'rb')
+        # p = pyaudio.PyAudio()
 
-    # p = pyaudio.PyAudio()
+        # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+        #                 channels=wf.getnchannels(),
+        #                 rate=wf.getframerate(),
+        #                 output=True,
+        #                 stream_callback=callback)
 
-    # stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-    #                 channels=wf.getnchannels(),
-    #                 rate=wf.getframerate(),
-    #                 output=True,
-    #                 stream_callback=callback)
-
-    # stream.start_stream()
-    # data = wf.readframes(CHUNK)
+        # stream.start_stream()
+        # data = wf.readframes(CHUNK)
 
 # printKey will be called each time a keypad button is pressed
 keypad.registerKeyPressHandler(printKey)
@@ -62,6 +63,6 @@ try:
         #     stream.close()
         #     wf.close()
 
-        time.sleep(0.2)
+        time.sleep(0.3)
 except:
     keypad.cleanup()
