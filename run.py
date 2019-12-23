@@ -6,7 +6,8 @@ import pyaudio
 import wave
 import threading
 from threading import Thread
-
+import sys 
+import trace 
 # p = pyaudio.PyAudio()
 
 # GPIO.setwarnings(False)
